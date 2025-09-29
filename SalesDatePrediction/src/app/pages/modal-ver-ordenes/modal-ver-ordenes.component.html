@@ -1,0 +1,7 @@
+<h2 mat-dialog-title class="text-center mt-3">Results</h2>
+<mat-dialog-content>
+    <app-orders [customerId]="data.id" [customerName]="data.nombre"></app-orders>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button matButton mat-dialog-close (click)="cerrar()">Close</button>
+</mat-dialog-actions>

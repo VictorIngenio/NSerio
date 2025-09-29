@@ -1,0 +1,59 @@
+<div class="d-flex justify-content-between m-4">
+    <div>
+        <h3>Customers</h3>
+    </div>
+    <div>
+        <mat-form-field appearance="outline">
+            <mat-label>Customer Name</mat-label>
+            <input matInput placeholder="Customer Name" type="text" [formControl]="busqueda">
+            <mat-icon matSuffix (click)="buscarCliente()" class="cursor">search</mat-icon>
+        </mat-form-field>
+    </div>
+</div>
+<div>
+    <table mat-table [dataSource]="dataSource" matSort>
+        <!-- Customer Name Column -->
+        <ng-container matColumnDef="Customer Name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer Name </th>
+        <td mat-cell *matCellDef="let row"> {{row.customerName}} </td>
+        </ng-container>
+
+        <!-- Last Order Date Column -->
+        <ng-container matColumnDef="Last Order Date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Order Date </th>
+        <td mat-cell *matCellDef="let row"> {{row.lastOrderDate}} </td>
+        </ng-container>
+
+        <!-- Next Predicted Order Column -->
+        <ng-container matColumnDef="Next Predicted Order">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Next Predicted Order </th>
+        <td mat-cell *matCellDef="let row"> {{row.nextPredictedOrder}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="View Orders">
+        <th mat-header-cell *matHeaderCellDef>VIEW ORDERS</th>
+        <td mat-cell *matCellDef="let row">
+            <mat-label class="text-danger cursor" 
+                (click)="verOrdenes(row.customerId, row.customerName)">VIEW ORDERS
+            </mat-label>
+        </td>
+        </ng-container>
+
+        <ng-container matColumnDef="New Order">
+        <th mat-header-cell *matHeaderCellDef>NEW ORDER</th>
+        <td mat-cell *matCellDef="let row">
+            <mat-label class="text-success cursor" 
+                (click)="crearOrden(row.customerId, row.customerName)">NEW ORDER
+            </mat-label>
+        </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                    showFirstLastButtons
+                    aria-label="Rows per page">
+    </mat-paginator>
+</div>

@@ -1,0 +1,50 @@
+<div class="bg-danger text-white py-2 ps-2">
+    <mat-label>{{ customerName }} - Orders</mat-label>
+</div>
+<div>
+    <table mat-table [dataSource]="dataSource" matSort>
+        <!-- Order ID Column -->
+        <ng-container matColumnDef="Order ID">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Order ID </th>
+        <td mat-cell *matCellDef="let row"> {{row.orderid}} </td>
+        </ng-container>
+
+        <!-- Required Date Column -->
+        <ng-container matColumnDef="Required Date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Required Date </th>
+        <td mat-cell *matCellDef="let row"> {{row.requireddate}} </td>
+        </ng-container>
+
+        <!-- Shipped Date Column -->
+        <ng-container matColumnDef="Shipped Date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Shipped Date </th>
+        <td mat-cell *matCellDef="let row"> {{row.shippeddate}} </td>
+        </ng-container>
+
+        <!-- Ship Name Column -->
+        <ng-container matColumnDef="Ship Name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Ship Name </th>
+        <td mat-cell *matCellDef="let row"> {{row.shipname}} </td>
+        </ng-container>
+
+        <!-- Ship Address Column -->
+        <ng-container matColumnDef="Ship Address">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Ship Address </th>
+        <td mat-cell *matCellDef="let row"> {{row.shipaddress}} </td>
+        </ng-container>
+
+        <!-- Ship City Column -->
+        <ng-container matColumnDef="Ship City">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Ship City </th>
+        <td mat-cell *matCellDef="let row"> {{row.shipcity}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                    showFirstLastButtons
+                    aria-label="Rows per page">
+    </mat-paginator>
+</div>
