@@ -1,0 +1,4 @@
+.vs/
+WebApiService/WebApiService/bin/
+WebApiService/WebApiService/obj/
+WebApiService/WebApiService/*.csproj
